@@ -1,0 +1,9 @@
+IMY-300-Project/Build/*
+IMY-300-Project/Temp/*
+IMY-300-Project/Library/*
+IMY-300-Project/ProjectSettings/*
+
+*.meta
+*.exe
+
+
