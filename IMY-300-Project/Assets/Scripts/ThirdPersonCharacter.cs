@@ -32,7 +32,6 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
 		void Start()
 		{
-			//m_Animation = GetComponent<Animation>();
 			m_Animator = GetComponent<Animator>();
 			m_Rigidbody = GetComponent<Rigidbody>();
 			m_Capsule = GetComponent<CapsuleCollider>();
@@ -52,7 +51,6 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			// direction.
 			if (move.magnitude > 1f){
 				move.Normalize();
-				this.GetComponent<Animation> ().CrossFade ("standard_run");
 				}
 			move = transform.InverseTransformDirection(move);
 			CheckGroundStatus();

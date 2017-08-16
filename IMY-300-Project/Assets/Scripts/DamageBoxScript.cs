@@ -22,6 +22,7 @@ public class DamageBoxScript : MonoBehaviour
 		{
 			//Debug.Log("Collision detected");
 			col.SendMessage((isDamaging)? "takeDamage":"heal", Time.deltaTime * damage);
+			col.SendMessage("takeHit");
 		}
 	}
 }

@@ -41,7 +41,7 @@ public class Proximity : MonoBehaviour
   {
     checkDistances();
 
-    if(distanceShop1 <= 2f)
+    if(distanceShop1 <= 15f)
     {
       //Debug.Log("Close Enough");
       helpText.text = "Press E to shop";
@@ -52,7 +52,7 @@ public class Proximity : MonoBehaviour
       }
     }
 
-    else if(distanceRoom <= 2f)
+    else if(distanceRoom <= 15f)
     {
       helpText.text = "Press E to sleep";
       if(Input.GetKeyDown("e"))
@@ -63,7 +63,7 @@ public class Proximity : MonoBehaviour
       }
     }
 
-    else if(distanceClass <= 5f)
+    else if(distanceClass <= 18f)
     {
       helpText.text = "Press E to attend class";
       if(Input.GetKeyDown("e"))

@@ -14,6 +14,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         private Vector3 m_CamForward;             // The current forward direction of the camera
         private Vector3 m_Move;
         private bool m_Jump;                      // the world-relative desired move direction, calculated from the camForward and user input.
+        public bool fight;
         public bool isShowing;
         public Canvas CellphoneUI;
         public Text cellXP;
@@ -23,6 +24,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
         public Canvas PauseUI;
         public bool isPShowing;
+        public Animator anim;
 
         private float health;
         private float energy;
@@ -69,6 +71,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             }
 
             // get the third person character ( this should never be null due to require component )
+            anim = player.GetComponent<Animator>();
             m_Character = GetComponent<ThirdPersonCharacter>();
             sunInitialIntensity = sun.intensity;
             hidePhone();
@@ -114,6 +117,83 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                 currentTimeOfDay = 0;
                 player.SendMessage("sleep");
             }
+
+            if(Input.GetKey("f"))
+            {
+              // fight = true;
+              //Debug.Log(fight);
+              anim.SetInteger("fights", 0);
+              // Debug.Log("F pressed");
+              // Debug.Log(fight);
+
+            }
+
+            // if(fight)
+            // {
+              if(Input.GetMouseButtonDown(0))
+          		{
+          			anim.SetInteger("fights", 1);
+                Debug.Log("click");
+                if(Input.GetMouseButtonDown(0))
+            		{
+            			anim.SetInteger("fights", 2);
+                  Debug.Log("click");
+                  if(Input.GetMouseButtonDown(0))
+              		{
+              			anim.SetInteger("fights", 3);
+                    Debug.Log("click");
+              		}
+            		}
+
+          		}
+              // if(Input.GetMouseButtonDown(0))
+          		// {
+          		// 	anim.SetInteger("fights", 2);
+              //   Debug.Log("click");
+          		// }
+              // if(Input.GetMouseButtonDown(0))
+          		// {
+          		// 	anim.SetInteger("fights", 3);
+              //   Debug.Log("click");
+          		// }
+          		if(Input.GetMouseButtonDown(1))
+          		{
+          			anim.SetInteger("fights", 7);
+          		}
+          		if(Input.GetMouseButtonUp(1))
+          		{
+          			anim.SetInteger("fights", 0);
+          		}
+          		if(Input.GetKey("r"))
+          		{
+          			anim.SetInteger("fights", 4);
+          		}
+          		if(Input.GetKeyUp("r"))
+          		{
+          			anim.SetInteger("fights", 0);
+          		}
+              if(Input.GetKey("q"))
+          		{
+          			anim.SetInteger("fights", 6);
+          		}
+              if(Input.GetKeyUp("q"))
+          		{
+          			anim.SetInteger("fights", 0);
+          		}
+          		if(Input.GetKey("t"))
+          		{
+          			anim.SetInteger("fights", 5);
+          		}
+          		if(Input.GetKeyUp("t"))
+          		{
+          			anim.SetInteger("fights", 0);
+          		}
+              if(Input.GetKey("f"))
+              {
+                // fight = false;
+                anim.SetInteger("fights", -1);
+              }
+
         }
 
 
@@ -344,5 +424,10 @@ namespace UnityStandardAssets.Characters.ThirdPerson
     public void addXP(int x)
     {
       XP += x;
+    }
+
+    public void takeHit()
+    {
+      anim.SetInteger("fights", 8);
     }
 }}
